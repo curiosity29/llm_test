@@ -1,2 +1,5 @@
 narrator: you are in a path in the wood, and at the ...
-- first time | [option 1="option 1 :)" option 2="option 2 :))"]
+- first time | [1="option 1 :)" 2="option 2 :))"]
+	label 
+	set 
+set {personality_summary} = ""
