@@ -22,6 +22,11 @@ general/text_to_speech=true
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+CharacterManager="*res://Global/CharacterManager.gd"
+Event="*res://Global/Event.gd"
+RelationshipManager="*res://Global/RelationshipManager.gd"
+State="*res://Global/State.gd"
+Summarizer="*res://Global/Summarizer.gd"
 
 [dialogic]
 

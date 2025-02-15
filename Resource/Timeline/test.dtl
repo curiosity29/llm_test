@@ -1,4 +1,6 @@
-narrator: you are in a path in the wood, and at the ...
+narrator: Chapter I\: The Hero and The Princess\
+\
+You are on a path in the wood, and at the end of that path is a cabin. And in the basement of that cabin is a princess. You're here to slay here. If you don't, it will be the end of the world.
 - first time | [1="option 1 :)" 2="option 2 :))"]
 	label 
 	set 

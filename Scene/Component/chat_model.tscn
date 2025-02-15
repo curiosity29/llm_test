@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxvjbdddkrtjh"]
+
+[ext_resource type="Script" uid="uid://68odhwtxnl3l" path="res://Scene/Component/chat_model.gd" id="1_3mv4i"]
+[ext_resource type="Script" uid="uid://clxouh6yxut8u" path="res://nobody_who_chat.gd" id="2_nuhm7"]
+[ext_resource type="Script" uid="uid://cwu8ru6dunuse" path="res://Scene/Component/story_history.gd" id="3_nuhm7"]
+
+[node name="ChatModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mv4i")
+
+[node name="ChoiceGenerator" type="NobodyWhoChat" parent="." node_paths=PackedStringArray("model_node")]
+model_node = NodePath("../NobodyWhoModel")
+
+[node name="StoryTeller" type="NobodyWhoChat" parent="." node_paths=PackedStringArray("model_node")]
+model_node = NodePath("../NobodyWhoModel")
+system_prompt = "You are a story teller, "
+script = ExtResource("2_nuhm7")
+
+[node name="NobodyWhoModel" type="NobodyWhoModel" parent="."]
+model_path = "res://Resource/Model/gemma-2-2b-it-Q4_K_M.gguf"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 25.0
+offset_right = 1053.0
+offset_bottom = 323.0
+text = "abcsd
+
+respond:
+"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 384.0
+offset_bottom = 322.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 17.0
+offset_right = 1134.0
+offset_bottom = 68.0
+text = "History"
+
+[node name="StoryHistory" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 1113.0
+offset_bottom = 599.0
+script = ExtResource("3_nuhm7")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StoryHistory"]
+layout_mode = 0
+offset_right = 1004.0
+offset_bottom = 531.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="EventContainer" type="VBoxContainer" parent="StoryHistory/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StoryHistory/ScrollContainer/EventContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[connection signal="response_updated" from="StoryTeller" to="." method="_on_nobody_who_chat_response_updated"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

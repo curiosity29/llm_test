@@ -1,8 +1,8 @@
-class_name RelationshipManager
+#class_name RelationshipManager
 extends Node
 
 
-func update_relationships(event: Event) -> void:
+func update_relationships(event: StoryEvent) -> void:
 	
 	for character_pair in get_pair_array_from_array(event.characters):
 		var char1 = character_pair[0]

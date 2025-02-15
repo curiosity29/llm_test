@@ -5,5 +5,3 @@ var source: Character
 var target: Character
 
 var summary: String
-
-

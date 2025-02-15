@@ -7,4 +7,3 @@ var name: String
 
 
 var memory: Array
-
